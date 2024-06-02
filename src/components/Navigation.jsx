@@ -10,6 +10,9 @@ const Navigation = () => {
       <Button as={Link} to="/chat" colorScheme="teal" mb={{ base: 2, md: 0 }}>
         Chat
       </Button>
+      <Button as={Link} to="/image-editor" colorScheme="teal" mb={{ base: 2, md: 0 }}>
+        Image Editor
+      </Button>
     </Box>
   );
 };
