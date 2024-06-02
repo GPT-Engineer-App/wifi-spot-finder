@@ -20,7 +20,7 @@ function ImageEditor() {
   };
 
   const handleRemoveBackground = () => {
-    alert("Background removal functionality will be implemented here.");
+    setBgColor("transparent");
   };
 
   const handleBgColorChange = (event) => {
