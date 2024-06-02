@@ -13,9 +13,9 @@ const Chat = () => {
   };
 
   return (
-    <Container centerContent maxW="container.md" height="100vh" display="flex" flexDirection="column" justifyContent="center" alignItems="center">
+    <Container centerContent maxW={{ base: "container.sm", md: "container.md" }} height="100vh" display="flex" flexDirection="column" justifyContent="center" alignItems="center">
       <VStack spacing={4} width="100%">
-        <Box width="100%" p={4} borderWidth={1} borderRadius="md" overflowY="auto" height="60vh">
+        <Box width="100%" p={4} borderWidth={1} borderRadius="md" overflowY="auto" height="60vh" maxW={{ base: "100%", md: "80%" }}>
           {messages.map((msg, index) => (
             <Box key={index} alignSelf={msg.sender === "user" ? "flex-end" : "flex-start"} mb={2}>
               <Text bg={msg.sender === "user" ? "teal.100" : "gray.100"} p={2} borderRadius="md">

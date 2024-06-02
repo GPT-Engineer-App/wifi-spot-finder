@@ -10,7 +10,7 @@ const Index = () => {
   ]);
 
   return (
-    <Container centerContent maxW="container.md" height="100vh" display="flex" flexDirection="column" justifyContent="center" alignItems="center">
+    <Container centerContent maxW={{ base: "container.sm", md: "container.md" }} height="100vh" display="flex" flexDirection="column" justifyContent="center" alignItems="center">
       <VStack spacing={4} width="100%">
         <Box display="flex" alignItems="center">
           <FaWifi size="2em" />
@@ -18,7 +18,7 @@ const Index = () => {
             Nearby WiFi Networks
           </Text>
         </Box>
-        <List spacing={3} width="100%">
+        <List spacing={3} width="100%" maxW={{ base: "100%", md: "80%" }}>
           {wifiNetworks.map((network, index) => (
             <ListItem key={index} p={4} borderWidth={1} borderRadius="md">
               <Text fontSize="lg" fontWeight="bold">
