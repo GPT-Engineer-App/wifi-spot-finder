@@ -1,44 +1,33 @@
 import React, { useState } from "react";
-import { Container, VStack, Text, Button, Input, Box, useToast } from "@chakra-ui/react";
+import { Container, VStack, Text, Button, Input, Box, useToast, List, ListItem, ListIcon } from "@chakra-ui/react";
 import { FaWifi } from "react-icons/fa";
 
 const Index = () => {
-  const [wifiPassword, setWifiPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
-  const toast = useToast();
-
-  const handleShowPassword = () => {
-    if (wifiPassword) {
-      setShowPassword(!showPassword);
-    } else {
-      toast({
-        title: "No WiFi password found.",
-        description: "Please enter a WiFi password.",
-        status: "warning",
-        duration: 3000,
-        isClosable: true,
-      });
-    }
-  };
+  const [wifiNetworks, setWifiNetworks] = useState([
+    { ssid: "Network1", password: "password1" },
+    { ssid: "Network2", password: "password2" },
+    { ssid: "Network3", password: "password3" },
+  ]);
 
   return (
     <Container centerContent maxW="container.md" height="100vh" display="flex" flexDirection="column" justifyContent="center" alignItems="center">
-      <VStack spacing={4}>
+      <VStack spacing={4} width="100%">
         <Box display="flex" alignItems="center">
           <FaWifi size="2em" />
           <Text fontSize="2xl" ml={2}>
-            Nearby WiFi Password
+            Nearby WiFi Networks
           </Text>
         </Box>
-        <Input placeholder="Enter WiFi Password" value={wifiPassword} onChange={(e) => setWifiPassword(e.target.value)} size="lg" />
-        <Button colorScheme="teal" onClick={handleShowPassword}>
-          {showPassword ? "Hide Password" : "Show Password"}
-        </Button>
-        {showPassword && (
-          <Box p={4} borderWidth={1} borderRadius="md" width="100%" textAlign="center">
-            <Text fontSize="lg">{wifiPassword}</Text>
-          </Box>
-        )}
+        <List spacing={3} width="100%">
+          {wifiNetworks.map((network, index) => (
+            <ListItem key={index} p={4} borderWidth={1} borderRadius="md">
+              <Text fontSize="lg" fontWeight="bold">
+                {network.ssid}
+              </Text>
+              <Text>Password: {network.password}</Text>
+            </ListItem>
+          ))}
+        </List>
       </VStack>
     </Container>
   );
