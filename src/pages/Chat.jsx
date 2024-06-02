@@ -8,6 +8,11 @@ const Chat = () => {
   const handleSend = () => {
     if (input.trim()) {
       setMessages([...messages, { text: input, sender: "user" }]);
+      if (input.trim().toLowerCase() === "hi") {
+        setMessages((prevMessages) => [...prevMessages, { text: input, sender: "user" }, { text: "Hi, how can I assist you today?", sender: "bot" }]);
+      } else {
+        setMessages((prevMessages) => [...prevMessages, { text: input, sender: "user" }]);
+      }
       setInput("");
     }
   };
